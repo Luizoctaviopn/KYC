@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KYC - Verificação de Identidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="badge">KYC digital</p>
+      <h1>Verificação segura de identidade para onboarding rápido</h1>
+      <p class="subtitle">
+        Colete dados pessoais, endereço e comprovantes em poucos passos. O envio
+        é protegido e segue boas práticas de privacidade para acelerar a análise
+        da sua operação.
+      </p>
+      <div class="hero__meta">
+        <span class="meta">LGPD-ready</span>
+        <span class="meta">Uploads criptografados</span>
+        <span class="meta">Atualização de status em tempo real</span>
+      </div>
+    </div>
+    <div class="hero__aside">
+      <div class="card highlight">
+        <div class="card__title">Status do processo</div>
+        <p id="status-text">Aguardando envio</p>
+        <button id="status-refresh" class="btn btn-secondary">Atualizar status</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <div class="card__title">Dados pessoais</div>
+      <form id="kyc-form" class="form">
+        <div class="grid">
+          <label class="field">
+            <span>Nome completo</span>
+            <input type="text" name="fullName" required placeholder="Digite seu nome" />
+          </label>
+          <label class="field">
+            <span>E-mail</span>
+            <input type="email" name="email" required placeholder="voce@email.com" />
+          </label>
+          <label class="field">
+            <span>Telefone</span>
+            <input type="tel" name="phone" required placeholder="(11) 99999-9999" />
+          </label>
+          <label class="field">
+            <span>Documento (CPF/CNPJ)</span>
+            <input type="text" name="document" required placeholder="000.000.000-00" />
+          </label>
+        </div>
+
+        <h3 class="section-title">Endereço</h3>
+        <div class="grid">
+          <label class="field">
+            <span>CEP</span>
+            <input type="text" name="zipcode" required placeholder="00000-000" />
+          </label>
+          <label class="field">
+            <span>Logradouro</span>
+            <input type="text" name="street" required placeholder="Rua, número e complemento" />
+          </label>
+          <label class="field">
+            <span>Cidade</span>
+            <input type="text" name="city" required placeholder="São Paulo" />
+          </label>
+          <label class="field">
+            <span>Estado</span>
+            <input type="text" name="state" required placeholder="SP" />
+          </label>
+        </div>
+
+        <h3 class="section-title">Documentos</h3>
+        <div class="grid grid--files">
+          <label class="field file">
+            <span>Documento de identidade (RG ou CNH)</span>
+            <input type="file" name="idDocument" accept="image/*,.pdf" required />
+            <small>Formatos: JPG, PNG ou PDF</small>
+          </label>
+          <label class="field file">
+            <span>Comprovante de endereço</span>
+            <input type="file" name="proofOfAddress" accept="image/*,.pdf" required />
+            <small>Conta de consumo ou contrato em até 90 dias</small>
+          </label>
+        </div>
+
+        <div class="form__footer">
+          <label class="check">
+            <input type="checkbox" name="consent" required />
+            <span>Concordo em enviar meus dados para validação e estou ciente da política de privacidade.</span>
+          </label>
+          <button type="submit" class="btn">Enviar para análise</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card secondary">
+      <div class="card__title">Como funciona</div>
+      <ol class="steps">
+        <li><strong>Preencha</strong> os dados pessoais e endereço.</li>
+        <li><strong>Anexe</strong> um documento oficial e um comprovante de endereço.</li>
+        <li><strong>Envie</strong> e acompanhe o status diretamente neste painel.</li>
+        <li><strong>Resultado</strong>: você recebe o retorno por e-mail ou pelo painel da empresa.</li>
+      </ol>
+      <div class="notice">
+        Utilize este front-end com a API já existente da aplicação. Ajuste a URL da API em
+        <code>app.js</code> para integrar com o ambiente desejado (homologação ou produção).
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
